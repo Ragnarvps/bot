@@ -1,5 +1,6 @@
 #!/bin/bash
 clear
+#--------[ DESENVOLVIDO POR @CRAZY_VPN ]-----------#
 source ShellBot.sh
 touch lista
 [[ -z $1 ]] && {
@@ -20,7 +21,7 @@ ShellBot.username
 menu() {
     local msg
         msg="=×=×=×=×=×=×=×=×=×=×=×=×=×=\n"
-        msg+="<b>🤖 OLA SEJA BEM VINDO 🤖</b>\n"
+        msg+="<b>🤖 OLA SEJA BEM VINDO(a) 🤖</b>\n"
         msg+="=×=×=×=×=×=×=×=×=×=×=×=×=×=\n\n"
         msg+="Gere seu teste agora mesmo!"
         ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
@@ -44,16 +45,16 @@ criarteste() {
     tuserdate=$(date '+%C%y/%m/%d' -d " +1 days")
     useradd -M -N -s /bin/false $usuario -e $tuserdate > /dev/null 2>&1
     (echo "$senha";echo "$senha") | passwd $usuario > /dev/null 2>&1
-    echo "$senha" > /etc/VPSManager/senha/$usuario
+    echo "$senha" > /etc/SSHPlus/senha/$usuario
     echo "$usuario $limite" >> /root/usuarios.db
     echo "#!/bin/bash
 pkill -f "$usuario"
 userdel --force $usuario
 grep -v ^$usuario[[:space:]] /root/usuarios.db > /tmp/ph ; cat /tmp/ph > /root/usuarios.db
-rm /etc/VPSManager/senha/$usuario > /dev/null 2>&1
-rm -rf /etc/VPSManager/userteste/$usuario.sh" > /etc/VPSManager/userteste/$usuario.sh
-    chmod +x /etc/VPSManager/userteste/$usuario.sh
-    at -f /etc/VPSManager/userteste/$usuario.sh now + $tempo hour > /dev/null 2>&1
+rm /etc/SSHPlus/senha/$usuario > /dev/null 2>&1
+rm -rf /etc/SSHPlus/userteste/$usuario.sh" > /etc/SSHPlus/userteste/$usuario.sh
+    chmod +x /etc/SSHPlus/userteste/$usuario.sh
+    at -f /etc/SSHPlus/userteste/$usuario.sh now + $tempo hour > /dev/null 2>&1
     echo ${callback_query_from_id} >> lista
     # - ENVIA O SSH
     ShellBot.sendMessage --chat_id ${callback_query_message_chat_id} \
@@ -78,16 +79,16 @@ criarteste2() {
 		sshpass -p "$senha_server2" ssh -o ConnectTimeout=2 -o StrictHostKeyChecking=no root@$ip_server2 << EOF
 		useradd -M -N -s /bin/false $usuario -e $tuserdate > /dev/null 2>&1
     (echo "$senha";echo "$senha") | passwd $usuario > /dev/null 2>&1
-    echo "$senha" > /etc/VPSManager/senha/$usuario
+    echo "$senha" > /etc/SSHPlus/senha/$usuario
     echo "$usuario $limite" >> /root/usuarios.db
     echo "#!/bin/bash
 pkill -f "$usuario"
 userdel --force $usuario
 grep -v ^$usuario[[:space:]] /root/usuarios.db > /tmp/ph ; cat /tmp/ph > /root/usuarios.db
-rm /etc/VPSManager/senha/$usuario > /dev/null 2>&1
-rm -rf /etc/VPSManager/userteste/$usuario.sh" > /etc/VPSManager/userteste/$usuario.sh
-chmod +x /etc/VPSManager/userteste/$usuario.sh
-at -f /etc/VPSManager/userteste/$usuario.sh now + $tempo hour > /dev/null 2>&1
+rm /etc/SSHPlus/senha/$usuario > /dev/null 2>&1
+rm -rf /etc/SSHPlus/userteste/$usuario.sh" > /etc/SSHPlus/userteste/$usuario.sh
+chmod +x /etc/SSHPlus/userteste/$usuario.sh
+at -f /etc/SSHPlus/userteste/$usuario.sh now + $tempo hour > /dev/null 2>&1
 EOF
 	echo ${callback_query_from_id} >> lista
     # - ENVIA O SSH
@@ -119,16 +120,16 @@ criarteste3() {
 		sshpass -p "$senha_server3" ssh -o ConnectTimeout=2 -o StrictHostKeyChecking=no root@$ip_server3 << EOF
 		useradd -M -N -s /bin/false $usuario -e $tuserdate > /dev/null 2>&1
     (echo "$senha";echo "$senha") | passwd $usuario > /dev/null 2>&1
-    echo "$senha" > /etc/VPSManager/senha/$usuario
+    echo "$senha" > /etc/SSHPlus/senha/$usuario
     echo "$usuario $limite" >> /root/usuarios.db
     echo "#!/bin/bash
 pkill -f "$usuario"
 userdel --force $usuario
 grep -v ^$usuario[[:space:]] /root/usuarios.db > /tmp/ph ; cat /tmp/ph > /root/usuarios.db
-rm /etc/VPSManager/senha/$usuario > /dev/null 2>&1
-rm -rf /etc/VPSManager/userteste/$usuario.sh" > /etc/VPSManager/userteste/$usuario.sh
-chmod +x /etc/VPSManager/userteste/$usuario.sh
-at -f /etc/VPSManager/userteste/$usuario.sh now + $tempo hour > /dev/null 2>&1
+rm /etc/SSHPlus/senha/$usuario > /dev/null 2>&1
+rm -rf /etc/SSHPlus/userteste/$usuario.sh" > /etc/SSHPlus/userteste/$usuario.sh
+chmod +x /etc/SSHPlus/userteste/$usuario.sh
+at -f /etc/SSHPlus/userteste/$usuario.sh now + $tempo hour > /dev/null 2>&1
 EOF
 	echo ${callback_query_from_id} >> lista
     # - ENVIA O SSH
@@ -154,11 +155,10 @@ infouser () {
 
 unset botao1
 botao1=''
-ShellBot.InlineKeyboardButton --button 'botao1' --line 1 --text 'TESTE BR1' --callback_data 'gerarssh'
-ShellBot.InlineKeyboardButton --button 'botao1' --line 1 --text ' TESTE BR2' --callback_data 'gerarssh2'
-ShellBot.InlineKeyboardButton --button 'botao1' --line 2 --text 'TESTE BR3' --callback_data 'gerarssh3'
-ShellBot.InlineKeyboardButton --button 'botao1' --line 3 --text 'SSH PREMIUM' --callback_data '2' --url 't.me/NT_Injector' # LINK TELEGRAM
-ShellBot.InlineKeyboardButton --button 'botao1' --line 4 --text 'BAIXAR APP' --callback_data '2' --url 'https://play.google.com/store/apps/details?id=com.net.free' # LINK TELEGRAM
+ShellBot.InlineKeyboardButton --button 'botao1' --line 1 --text '🇧🇷 TESTE BR1 🇧🇷' --callback_data 'gerarssh'
+ShellBot.InlineKeyboardButton --button 'botao1' --line 1 --text '🇧🇷 TESTE BR2 🇧🇷' --callback_data 'gerarssh2'
+ShellBot.InlineKeyboardButton --button 'botao1' --line 1 --text '🇧🇷 TESTE BR3 🇧🇷' --callback_data 'gerarssh3'
+ShellBot.InlineKeyboardButton --button 'botao1' --line 2 --text '🇧🇷 SSH PREMIUM 🇧🇷' --callback_data '2' --url 't.me/sshplus' # LINK TELEGRAM
 ShellBot.regHandleFunction --function criarteste --callback_data gerarssh
 ShellBot.regHandleFunction --function criarteste2 --callback_data gerarssh2
 ShellBot.regHandleFunction --function criarteste3 --callback_data gerarssh3
