@@ -1,6 +1,6 @@
 #!/bin/bash
 clear
-#--------[ DESENVOLVIDO POR @TNet10 ]-----------#
+#--------[ DESENVOLVIDO POR @Gigante_de_ferro ]-----------#
 source ShellBot.sh
 touch lista
 [[ -z $1 ]] && {
@@ -20,10 +20,10 @@ ShellBot.username
 # - Funcao menu
 menu() {
     local msg
-        msg="<b>======== • ✨ • ========</b>\n"
-        msg+="<b>🤖 BOT OFICIAL TNET 🤖</b>\n"
-        msg+="<b>=====================</b>\n"
-        msg+="🟣 VIVO 🔴 CLARO 🔵 TIM\n\n<b>⏳DURAÇÃO:</b>\n🇧🇷BR 01: 4 HORAS\n🇨🇦CA 01: 48 HORAS"
+        msg="=×=×=×=×=×=×=×=×=×=×=×=×=×=\n"
+        msg+="<b>🤖 OLA SEJA BEM VINDO(a) 🤖</b>\n"
+        msg+="=×=×=×=×=×=×=×=×=×=×=×=×=×=\n\n"
+        msg+="Gere seu teste agora mesmo!"
         ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
         --text "$(echo -e $msg)" \
         --reply_markup "$keyboard1" \
@@ -35,13 +35,13 @@ menu() {
 criarteste() {
     [[ $(grep -wc ${callback_query_from_id} lista) != '0' ]] && {
       ShellBot.sendMessage --chat_id ${callback_query_message_chat_id} \
-        --text "⚠️ Você já testou hoje ! \nCompre seu login por 30 dias e fique sempre conectado 😎\n\nhttps://tnetssh.xyz"
+        --text "VC JA CRIOU SSH HOJE !"
       return 0
     }
-    usuario=$(echo BR$(( RANDOM% + 250 )))
+    usuario=$(echo GDF$(( RANDOM% + 250 )))
     senha='1234'
     limite='2'
-    tempo='4'
+    tempo='24'
     tuserdate=$(date '+%C%y/%m/%d' -d " +2 days")
     useradd -M -N -s /bin/false $usuario -e $tuserdate > /dev/null 2>&1
     (echo "$senha";echo "$senha") | passwd $usuario > /dev/null 2>&1
@@ -58,7 +58,7 @@ rm -rf /etc/VPSManager/userteste/$usuario.sh" > /etc/VPSManager/userteste/$usuar
     echo ${callback_query_from_id} >> lista
     # - ENVIA O SSH
     ShellBot.sendMessage --chat_id ${callback_query_message_chat_id} \
-    --text "$(echo -e "✅ <b>CRIADO COM SUCESSO</b> ✅\n\n👤 <b>USUARIO:</b> <code>$usuario</code>\n🔑 <b>SENHA:</b> <code>$senha</code>\n\n⏳ Expira em: $tempo Horas\n\n🔧 Em nosso app, selecione:\n             <b>SERVIDOR BR 01</b>\n\nPara arquivos, utilize com a bandeira: 🇧🇷\n\n<b>Exemplo:</b> 🇧🇷VIVO, 🇧🇷CLARO, 🇧🇷TIM")" \
+     --text "$(echo -e "✅ <b>Criado com sucesso</b> ✅\n\nIP: $(cat /etc/IP)\nUSUARIO: <code>$usuario</code>\nSENHA: <code>$senha</code>\n\n⏳ Expira em: $tempo Hora")" \
     --parse_mode html
     return 0
 }
@@ -67,10 +67,10 @@ rm -rf /etc/VPSManager/userteste/$usuario.sh" > /etc/VPSManager/userteste/$usuar
 criarteste2() {
    [[ $(grep -wc ${callback_query_from_id} lista) != '0' ]] && {
       ShellBot.sendMessage --chat_id ${callback_query_message_chat_id} \
-        --text "⚠️ Você já testou hoje ! \nCompre seu login por 30 dias e fique sempre conectado 😎\n\nhttps://tnetssh.xyz"
+         --text "VC JA CRIOU SSH HOJE !"
       return 0
     }
-    usuario=$(echo CA$(( RANDOM% + 250 )))
+    usuario=$(echo GDF$(( RANDOM% + 250 )))
     senha='1234'
     limite='2'
     tempo='48'
@@ -93,12 +93,12 @@ EOF
 	echo ${callback_query_from_id} >> lista
     # - ENVIA O SSH
     ShellBot.sendMessage --chat_id ${callback_query_message_chat_id} \
-    --text "$(echo -e "✅ <b>CRIADO COM SUCESSO</b> ✅\n\n👤 <b>USUARIO:</b> <code>$usuario</code>\n🔑 <b>SENHA:</b> <code>$senha</code>\n\n⏳ Expira em: $tempo Horas\n\n🔧 Em nosso app, selecione:\n             <b>SERVIDOR CA 01</b>\n\nPara arquivos, utilize com a bandeira: 🇨🇦\n\n<b>Exemplo:</b> 🇨🇦VIVO, 🇨🇦CLARO, 🇨🇦TIM")" \
+   --text "$(echo -e "✅ <b>Criado com sucesso</b> ✅\n\nIP: $ip_server2\nUSUARIO: <code>$usuario</code>\nSENHA: <code>$senha</code>\n\n⏳ Expira em: $tempo Hora")" \
     --parse_mode html
     return 0
 else
 ShellBot.sendMessage --chat_id ${callback_query_message_chat_id} \
-	--text "$(echo -e SERVIDOR INDISPONIVEL)" \
+	--text "$(echo -e Erro Tente novamente Mais tarde!)" \
 	--parse_mode html
 	return 0
 fi
@@ -108,7 +108,7 @@ fi
 criarteste3() {
 	[[ $(grep -wc ${callback_query_from_id} lista) != '0' ]] && {
       ShellBot.sendMessage --chat_id ${callback_query_message_chat_id} \
-        --text "⚠️ Você já testou hoje ! \nCompre seu login por 30 dias e fique sempre conectado 😎\n\nhttps://tnetssh.xyz"
+        --text "VC JA CRIOU SSH HOJE !"
       return 0
     }
     usuario=$(echo us$(( RANDOM% + 250 )))
@@ -134,12 +134,12 @@ EOF
 	echo ${callback_query_from_id} >> lista
     # - ENVIA O SSH
     ShellBot.sendMessage --chat_id ${callback_query_message_chat_id} \
-    --text "$(echo -e "✅ <b>CRIADO COM SUCESSO</b> ✅\n\n👤 <b>USUARIO:</b> <code>$usuario</code>\n🔑 <b>SENHA:</b> <code>$senha</code>\n\n⏳ Expira em: $tempo Horas\n\n🔧 Em nosso app, selecione:\n               <b>SERVIDOR USA</b>\n\nPara arquivos, utilize com a bandeira: 🇺🇲\n\n<b>Exemplo:</b> 🇺🇲VIVO, 🇺🇲CLARO, 🇺🇲TIM")" \
+    --text "$(echo -e "✅ <b>Criado com sucesso</b> ✅\n\nIP: $ip_server3\nUSUARIO: <code>$usuario</code>\nSENHA: <code>$senha</code>\n\n⏳ Expira em: $tempo Hora")" \
     --parse_mode html
     return 0
 else
 ShellBot.sendMessage --chat_id ${callback_query_message_chat_id} \
-	--text "$(echo -e SERVIDOR INDISPONIVEL)" \
+	--text "$(echo -e Erro Tente novamente Mais tarde!)" \
 	--parse_mode html
 	return 0
 fi
@@ -155,11 +155,11 @@ infouser () {
 
 unset botao1
 botao1=''
-ShellBot.InlineKeyboardButton --button 'botao1' --line 1 --text '🇧🇷 GERAR SSH BR 01 🇧🇷' --callback_data 'gerarssh'
-ShellBot.InlineKeyboardButton --button 'botao1' --line 2 --text '🇨🇦 GERAR SSH CA 01 🇨🇦' --callback_data 'gerarssh2'
-ShellBot.InlineKeyboardButton --button 'botao1' --line 3 --text '⬇️ NOSSO APP ⬇️' --callback_data '3' --url 'https://play.google.com/store/apps/details?id=com.tnetupdater'
-ShellBot.InlineKeyboardButton --button 'botao1' --line 4 --text '📎 ARQUIVOS 📎' --callback_data '4' --url 'https://t.me/tnet1'
-ShellBot.InlineKeyboardButton --button 'botao1' --line 5 --text '⬇️ OUTROS APPS ⬇️' --callback_data '5' --url 'https://tnetssh.xyz/downloads'
+ShellBot.InlineKeyboardButton --button 'botao1' --line 1 --text 'GERAR CONTA SSH' --callback_data 'gerarssh'
+#ShellBot.InlineKeyboardButton --button 'botao1' --line 2 --text '🇨🇦 GERAR SSH CA 01 🇨🇦' --callback_data 'gerarssh2'
+ShellBot.InlineKeyboardButton --button 'botao1' --line 2 --text ' BAIXAR APP' --callback_data '3' --url 'https://play.google.com/store/apps/details?id=com.net.free'
+ShellBot.InlineKeyboardButton --button 'botao1' --line 4 --text 'TELEGRAM' --callback_data '4' --url 'https://t.me/NT_Injector'
+#ShellBot.InlineKeyboardButton --button 'botao1' --line 5 --text '⬇️ OUTROS APPS ⬇️' --callback_data '5' --url 'https://tnetssh.xyz/downloads'
 ShellBot.regHandleFunction --function criarteste --callback_data gerarssh
 ShellBot.regHandleFunction --function criarteste2 --callback_data gerarssh2
 ShellBot.regHandleFunction --function criarteste3 --callback_data gerarssh3
